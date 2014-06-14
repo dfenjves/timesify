@@ -9,10 +9,11 @@ function svc_search_v2_articlesearch(data){
   var docs = data.response.docs;
   var doc = docs[Math.floor(Math.random()*docs.length)];
 
-  console.log(doc)
-  $("[data-role=subsection_name]").text(doc.subsection_name)
+  $("[data-role=subsection_name]").text(doc.subsection_name || doc.section_name)
   $("[data-role=headline]").text(doc.headline.main)
-  $("#news-content").html(doc.abstract || doc.snippet)
+  $("[data-role=byline]").text(doc.byline.original)
+  $("[data-role=date]").text(doc.pub_date)
+  $("[data-role=abstract]").html(doc.abstract || doc.snippet)
 }
 
 function article_content(data){
