@@ -302,3 +302,11 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+h1.cover-heading {
+  font-family: 'Libre Baskerville', serif;
+}
+.align-center {
+  margin-top: 8em;
+  text-align: center;
+}
