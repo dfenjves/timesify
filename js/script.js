@@ -57,7 +57,7 @@ function article_content(data){
     for(var i = 0; i < data.images.length; i++){
       images.push(data.images[i].url)
     }
-    var next = 0;
+    var next = 1;
     $('[data-role=fake-ad]').on('click', function(){
       $(this).attr('src', images[next]);
       next = next + 1 == images.length ? 0 : next + 1;
