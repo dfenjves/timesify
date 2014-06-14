@@ -17,7 +17,14 @@ function svc_search_v2_articlesearch(data){
 }
 
 function article_content(data){
-  $("#content").html(data.content)
+  var content = $(data.content);
+  content.find('img').remove()
+  content.find('h1, h2, h3, h4').remove()
+  content.find('p:empty').remove()
+  content.find('strong').replaceWith(function(){
+    return $('<span/>', { html: this.innerHTML })
+  })
+  $("[data-role=fake-news]").html(content)
 }
 
 $.ajax({
@@ -45,3 +52,5 @@ $.ajax({
   dataType: "jsonp",
   jsonpCallback: "article_content"
 });
+
+$('html').addClass('has-big-ad')
