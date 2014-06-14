@@ -26,6 +26,18 @@ function svc_search_v2_articlesearch(data){
   $("[data-role=byline]").text(doc.byline.original)
   $("[data-role=date]").text(date2string(doc.pub_date))
   $("[data-role=abstract]").html(doc.abstract || doc.snippet)
+
+  for(var i = 0; i < doc.multimedia.length; i++){
+    var multimedia = doc.multimedia[i];
+    if(multimedia.subtype == "xlarge")
+      break;
+  }
+  if(multimedia){
+    $("[data-role=image-container]").show()
+    var url = "http://static01.nyt.com/" + multimedia.url;
+    var image = $('<img/>', { src: url, height: multimedia.height, width: multimedia.width })
+    $("[data-role=image]").html(image)
+  }
 }
 
 function article_content(data){
