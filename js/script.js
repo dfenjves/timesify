@@ -25,7 +25,10 @@ function svc_search_v2_articlesearch(data){
   $("[data-role=headline]").text(doc.headline.main)
   $("[data-role=byline]").text(doc.byline.original)
   $("[data-role=date]").text(date2string(doc.pub_date))
-  $("[data-role=abstract]").html(doc.abstract || doc.snippet)
+
+  var snippet = doc.abstract || doc.snippet;
+  var info = "<strong>In case anyone asks:</strong> " + snippet;
+  $("[data-role=abstract]").html(info)
 
   for(var i = 0; i < doc.multimedia.length; i++){
     var multimedia = doc.multimedia[i];
@@ -50,13 +53,18 @@ function article_content(data){
   content.find('strong').replaceWith(function(){
     return $('<span/>', { html: this.innerHTML })
   })
+  content.find('a').attr('target', '_blank')
+
   $("[data-role=fake-news]").html(content)
 
   if(data.images.length){
     var images = [$('[data-role=fake-ad]').attr('src')]
     for(var i = 0; i < data.images.length; i++){
-      images.push(data.images[i].url)
+      if(data.images[i].height > 100){
+        images.push(data.images[i].url)
+      }
     }
+    console.log(images)
     var next = 1;
     $('[data-role=fake-ad]').on('click', function(){
       $(this).attr('src', images[next]);
