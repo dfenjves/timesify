@@ -5,6 +5,18 @@ function getParameterByName(name) {
   return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function date2string(date){
+  var date = new Date(date);
+  var months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
+                "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+
+  var month = months[ date.getMonth() ],
+      day   = date.getDate(),
+      year  = date.getFullYear();
+
+  return month + " " + day + ", " + year;
+}
+
 function svc_search_v2_articlesearch(data){
   var docs = data.response.docs;
   var doc = docs[Math.floor(Math.random()*docs.length)];
@@ -12,7 +24,7 @@ function svc_search_v2_articlesearch(data){
   $("[data-role=subsection_name]").text(doc.subsection_name || doc.section_name)
   $("[data-role=headline]").text(doc.headline.main)
   $("[data-role=byline]").text(doc.byline.original)
-  $("[data-role=date]").text(doc.pub_date)
+  $("[data-role=date]").text(date2string(doc.pub_date))
   $("[data-role=abstract]").html(doc.abstract || doc.snippet)
 }
 
