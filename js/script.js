@@ -10,7 +10,7 @@ function svc_search_v2_articlesearch(data){
   var doc = docs[Math.floor(Math.random()*docs.length)];
 
   $("#headline").text(doc.headline.main)
-  $("#news-content").text(doc.abstract)
+  $("#news-content").text(doc.abstract || doc.snippet)
 }
 
 function article_content(data){
@@ -22,7 +22,6 @@ $(document).ready(function(){
   $.ajax({
     url: "http://api.nytimes.com/svc/search/v2/articlesearch.jsonp",
     data: {
-      "q": "new york times",
       "sort": "newest",
       "api-key": "7fcada8d2ec5b00ecb81f0cec14db29a:7:69489929",
       "callback": "svc_search_v2_articlesearch",
