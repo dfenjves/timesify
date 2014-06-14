@@ -6,19 +6,17 @@ function getParameterByName(name) {
 }
 
 function svc_search_v2_articlesearch(data){
-  $(document).ready(function(){
-    var docs = data.response.docs;
-    var doc = docs[Math.floor(Math.random()*docs.length)];
+  var docs = data.response.docs;
+  var doc = docs[Math.floor(Math.random()*docs.length)];
 
-    $("#headline").text(doc.headline.main)
-    $("#news-content").text(doc.abstract || doc.snippet)
-  });
+  console.log(doc)
+  $("[data-role=subsection_name]").text(doc.subsection_name)
+  $("[data-role=headline]").text(doc.headline.main)
+  $("#news-content").html(doc.abstract || doc.snippet)
 }
 
 function article_content(data){
-  $(document).ready(function(){
-    $("#content").html(data.content)
-  })
+  $("#content").html(data.content)
 }
 
 $.ajax({
