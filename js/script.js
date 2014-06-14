@@ -65,16 +65,18 @@ $.ajax({
 });
 
 var url = getParameterByName("url");
-$.ajax({
-  url: "http://api.embed.ly/1/extract",
-  data: {
-    key: "dfdc0e05b3a240b48dc082e50573bfe2",
-    url: url,
-    format: "json"
-  },
-  type: "GET",
-  dataType: "jsonp",
-  jsonpCallback: "article_content"
-});
+if(url){
+  $.ajax({
+    url: "http://api.embed.ly/1/extract",
+    data: {
+      key: "dfdc0e05b3a240b48dc082e50573bfe2",
+      url: url,
+      format: "json"
+    },
+    type: "GET",
+    dataType: "jsonp",
+    jsonpCallback: "article_content"
+  });
+}
 
 $('html').addClass('has-big-ad')
