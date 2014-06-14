@@ -43,12 +43,26 @@ function svc_search_v2_articlesearch(data){
 function article_content(data){
   var content = $(data.content);
   content.find('img').remove()
-  content.find('h1, h2, h3, h4').remove()
   content.find('p:empty').remove()
+  content.find('h1, h2, h3, h4').replaceWith(function(){
+    return $('<span/>', { html: this.innerHTML })
+  })
   content.find('strong').replaceWith(function(){
     return $('<span/>', { html: this.innerHTML })
   })
   $("[data-role=fake-news]").html(content)
+
+  if(data.images.length){
+    var images = [$('[data-role=fake-ad]').attr('src')]
+    for(var i = 0; i < data.images.length; i++){
+      images.push(data.images[i].url)
+    }
+    var next = 0;
+    $('[data-role=fake-ad]').on('click', function(){
+      $(this).attr('src', images[next]);
+      next = next + 1 == images.length ? 0 : next + 1;
+    });
+  }
 }
 
 var url = getParameterByName("url");
