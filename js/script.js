@@ -1,11 +1,20 @@
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+  results = regex.exec(location.search);
+  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function svc_search_v2_articlesearch(data){
   var docs = data.response.docs;
-  console.log(docs)
+  var doc = docs[Math.floor(Math.random()*docs.length)];
+
+  $("#headline").text(doc.headline.main)
+  $("#news-content").text(doc.abstract)
 }
 
 function article_content(data){
-  console.log(data)
+  $("#content").html(data.content)
 }
 
 
@@ -24,7 +33,7 @@ $(document).ready(function(){
     dataType: "script"
   });
 
-  var url = "http://www.tmz.com/2014/06/14/casey-kasem-body-death-family-feud/";
+  var url = getParameterByName("url");
   $.ajax({
     url: "http://api.embed.ly/1/extract",
     data: {
