@@ -4,6 +4,11 @@ function svc_search_v2_articlesearch(data){
   console.log(docs)
 }
 
+function article_content(data){
+  console.log(data)
+}
+
+
 $(document).ready(function(){
   $.ajax({
     url: "http://api.nytimes.com/svc/search/v2/articlesearch.jsonp",
@@ -18,4 +23,17 @@ $(document).ready(function(){
     type: "GET",
     dataType: "script"
   });
-})
+
+  var url = "http://www.tmz.com/2014/06/14/casey-kasem-body-death-family-feud/";
+  $.ajax({
+    url: "http://api.embed.ly/1/extract",
+    data: {
+      key: "dfdc0e05b3a240b48dc082e50573bfe2",
+      url: url,
+      format: "json"
+    },
+    type: "GET",
+    dataType: "jsonp",
+    jsonpCallback: "article_content"
+  });
+});
