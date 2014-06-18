@@ -64,7 +64,6 @@ function article_content(data){
         images.push(data.images[i].url)
       }
     }
-    console.log(images)
     var next = 1;
     $('[data-role=fake-ad]').on('click', function(){
       $(this).attr('src', images[next]);
