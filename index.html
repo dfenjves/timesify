@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Timesify</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -14,18 +14,17 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style>
+          html {
+            background: url(images/brooklyn-bridge.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+          }
+        </style>
     </head>
     <body>
-        <style>
-        html {
-        background: url(images/brooklyn-bridge.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        }
-        </style>
         <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -42,7 +41,12 @@
                         </a>
                         <h1 class="cover-heading">Timesify. Browse Freely.</h1>
                         <p class="lead">
-                        Timesify turns articles on TMZ, Buzzfeed, and other embarrassing sites into the look of The New York Times, so you don't have to be ashamed. We cloak your love of Mary Kate and Ashley Olsen in the posture of a concerned citizen.
+                          Timesify turns articles on TMZ, Buzzfeed, and other embarrassing sites into the look of The New York Times, so you don't have to be ashamed. We cloak your love of Mary Kate and Ashley Olsen in the posture of a concerned citizen.
+                        </p>
+                        <p>
+                          <a href="#about" data-toggle="modal" data-target="#about">
+                            Learn more…
+                          </a>
                         </p>
                     </div>
                     <div class="row">
@@ -59,7 +63,7 @@
                         </div>
                         <div class="col-xs-3">
                             <a href="http://www.comedyhackday.org/nyc/" class="pull-left" id="starburst">
-                            <img src="images/starburst2.png">
+                              <img src="images/starburst2.png" alt="Winner of Comedy Hack Day 4">
                             </a>
                         </div>
                     </div>
@@ -70,18 +74,57 @@
                 </div>
             </div>
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <!-- Modal -->
+        <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">About Timesify</h4>
+              </div>
+              <div class="modal-body">
+                <h4>What It Is:</h4>
+                <p>
+                  Timesify hides embarrassing articles — the ones you're reading all the time (Gawker, TMZ, Upworthy, et al.) — and gives them the appearance of being a New York Times article. You read about butt injections, but look like you give a damn. 
+                </p>
+
+                <h4>How to Use It:</h4>
+                <p>
+                  On the Timesify homepage, drag the box that says "Timesify" to your bookmark bar. Any time you're on an article you'd like to Timesify, just click the Timesify bookmarklet. Family and friends will instantly think you're smarter than you are. 
+                </p>
+
+                <p>
+                  The text of the embarrassing article will be found on a page that appears to be the New York Times with a headline and photo from a New York Times article (always selected from the most recent articles the Times has published, using the Open Times API from Mashery). 
+                </p>
+
+                <p>
+                  At the start of the text there is a small section called in case you missed it that will summarize the article you are pretending to read in one to two sentences. That way if anyone asks you what you're reading about, you can tell them exactly what that article you aren't reading is about. Go ahead and read that no matter what. That might be the most news you read this week.
+                </p>
+
+                <p>
+                  If you'd like to see the images from the embarrassing article, just click the ad in the right-hand bar of the Timesified article and the ad will turn into the images from the article. Click it again to see the next photo on the page in case of listicle. 
+                </p>
+
+                <p>
+                  Go forth. Pretend to be something better than you are.
+                </p>
+              </div>
+              <div class="modal-footer">
+                Made by <a href="https://twitter.com/dfenjves" target="_blank">@dfenjves</a>, <a href="https://twitter.com/dlukenelson" target="_blank">@dlukenelson</a>, and <a href="https://twitter.com/kitopastorino" target="_blank">@kitopastorino</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-51919376-1', 'timesify.com');ga('send','pageview');
+          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+          function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+          e.src='//www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+          ga('create','UA-51919376-1', 'timesify.com');ga('send','pageview');
         </script>
     </body>
 </html>
